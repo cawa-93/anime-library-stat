@@ -2,14 +2,14 @@ import fs       from 'fs';
 import {google} from 'googleapis';
 
 
-function loadEnv() {
-	const data = JSON.parse(fs.readFileSync('./anime-library-stat-7e3e8f063a25.json'))
-	for (const dataKey in data) {
-		process.env[dataKey.toUpperCase()] = data[dataKey]
-	}
-}
-
-loadEnv()
+// function loadEnv() {
+// 	const data = JSON.parse(fs.readFileSync('./anime-library-stat-7e3e8f063a25.json'))
+// 	for (const dataKey in data) {
+// 		process.env[dataKey.toUpperCase()] = data[dataKey]
+// 	}
+// }
+//
+// loadEnv()
 
 const scopes = 'https://www.googleapis.com/auth/analytics.readonly'
 
@@ -48,5 +48,5 @@ getUsersRatingList().then(rating => {
 		updated_at: Date.now(),
 		rating,
 	}
-	fs.writeFileSync('./stat.json', JSON.stringify(data), {encoding: 'utf8'})
+	fs.writeFileSync('./users-stat.json', JSON.stringify(data), {encoding: 'utf8'})
 })

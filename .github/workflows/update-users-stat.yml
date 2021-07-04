@@ -22,8 +22,11 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: node .
+      env:
+        CLIENT_EMAIL: ${{ secrets.CLIENT_EMAIL }}
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
     - run: |
         git add users-stat.json
         git commit -m "Update user stats"
         git push
-    
+
