@@ -6,7 +6,7 @@ name: Node.js CI
 on:
   workflow_dispatch:
   schedule:
-  - cron: "* * * * *"
+  - cron: "0 0 * * MON"
 
 jobs:
   build:
@@ -27,6 +27,8 @@ jobs:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
     - run: |
         git add users-stat.json
-        git commit -m "Update user stats"
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git commit -m "Update users stat"
         git push
 
